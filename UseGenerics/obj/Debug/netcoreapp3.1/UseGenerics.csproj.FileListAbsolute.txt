@@ -1,0 +1,16 @@
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\UseGenerics.exe
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\UseGenerics.deps.json
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\UseGenerics.runtimeconfig.json
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\UseGenerics.runtimeconfig.dev.json
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\UseGenerics.dll
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\UseGenerics.pdb
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\Generics.dll
+C:\Users\hp\Git Repository\Week 4\UseGenerics\bin\Debug\netcoreapp3.1\Generics.pdb
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.csprojAssemblyReference.cache
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.AssemblyInfoInputs.cache
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.AssemblyInfo.cs
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.csproj.CoreCompileInputs.cache
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.csproj.CopyComplete
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.dll
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.pdb
+C:\Users\hp\Git Repository\Week 4\UseGenerics\obj\Debug\netcoreapp3.1\UseGenerics.genruntimeconfig.cache
