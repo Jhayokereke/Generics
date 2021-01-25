@@ -7,24 +7,24 @@ namespace UseGenerics
     {
         static void Main(string[] args)
         {
-            LinkedList<string> List = new LinkedList<string>();
-            Console.WriteLine(List.Count);
-            List.Add("Paul");
-            List.Add("Dammy");
-            Console.WriteLine(List.Count);
-            List.Remove("Paul");
-            Console.WriteLine(List.Check("Paul"));
-            Console.WriteLine(List.Count);
-            List.Add("Daniel");
-            List.Add("Bola");
-            List.Add("Toyo");
-            List.Add("Sam");
-            Console.WriteLine(List.Index("Sam"));
-            Console.WriteLine(List.Count);
+            Stack<string> stack = new Stack<string>();
 
-            List.Remove("Bola");
-            Console.WriteLine(List.Index("Bola"));
-            Console.WriteLine(List.Add("John"));
+            stack.Push("Ola");
+            stack.Push("Ramon");
+            stack.Push("Ade");
+            Console.WriteLine(stack.Size());
+            Console.WriteLine(stack.Peek());
+            stack.Pop();
+            Console.WriteLine(stack.Size());
+            Console.WriteLine(stack.Peek());
+            stack.Pop();
+            Console.WriteLine(stack.Size());
+            Console.WriteLine(stack.Peek());
+            stack.Pop();
+            Console.WriteLine(".........................");
+            Console.WriteLine(stack.Size());
+            stack.Push("Sam");
+            Console.WriteLine(stack.Peek());
         }
     }
 }
