@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Generics
 {
-    public class Stack<T> : ICollection<T>
+    public class Queue<T>: ICollection<T>
     {
-        public Node Head;
+        private Node Head;
+
+        private Node Tail;
         public int Count { get; private set; } = 0;
 
         public bool IsReadOnly => throw new NotImplementedException();
@@ -18,50 +20,40 @@ namespace Generics
             {
                 return true;
             }
-            else 
+            else
             {
                 return false;
             }
         }
 
-        public void Push(T item)
+        public void Enqueue(T item)
+        {
+            Node temp = new Node(item);
+            if (Tail == null)
+            {
+                Head = Tail = temp;
+                Count++;
+            }
+            else
+            {
+                Tail.Next = temp;
+                Tail = temp;
+                Count++;
+            }
+        }
+
+        public T Dequeue()
         {
             if (Head == null)
             {
-                Head = new Node(item);
-                Count++;
+                throw new NullReferenceException("This is an empty queue");
             }
             else
             {
-                Node temp = new Node(item);
-                temp.Next = Head;
-                Head = temp;
-                Count++;
-            }
-        }
-
-        public T Peek()
-        {
-            if (IsEmpty())
-            {
-                throw new NullReferenceException("You are attempting to return a null value");
-            }
-            else
-            {
-                return Head.Value;
-            }
-        }
-
-        public void Pop()
-        {
-            if (IsEmpty())
-            {
-                throw new NullReferenceException("You are attempting to remove a null value");
-            }
-            else
-            {
+                Node temp = Head;
                 Head = Head.Next;
                 Count--;
+                return temp.Value;
             }
         }
 

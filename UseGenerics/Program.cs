@@ -7,24 +7,25 @@ namespace UseGenerics
     {
         static void Main(string[] args)
         {
-            Stack<string> stack = new Stack<string>();
+            Queue<string> queue = new Queue<string>();
 
-            stack.Push("Ola");
-            stack.Push("Ramon");
-            stack.Push("Ade");
-            Console.WriteLine(stack.Size());
-            Console.WriteLine(stack.Peek());
-            stack.Pop();
-            Console.WriteLine(stack.Size());
-            Console.WriteLine(stack.Peek());
-            stack.Pop();
-            Console.WriteLine(stack.Size());
-            Console.WriteLine(stack.Peek());
-            stack.Pop();
-            Console.WriteLine(".........................");
-            Console.WriteLine(stack.Size());
-            stack.Push("Sam");
-            Console.WriteLine(stack.Peek());
+            Console.WriteLine(queue.Count);
+            queue.Enqueue("Damilola");
+            Console.WriteLine(queue.Count);
+            queue.Enqueue("Samuel");
+            Console.WriteLine(queue.Count);
+            queue.Enqueue("Bolu");
+            Console.WriteLine(queue.Count);
+            queue.Enqueue("Nnenna");
+            Console.WriteLine(queue.Count);
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Count);
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Count);
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Count);
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Count);
         }
     }
 }
