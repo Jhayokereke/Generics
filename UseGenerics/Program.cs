@@ -7,25 +7,25 @@ namespace UseGenerics
     {
         static void Main(string[] args)
         {
-            Queue<string> queue = new Queue<string>();
+            LinkedList<string> List = new LinkedList<string>();
 
-            Console.WriteLine(queue.Count);
-            queue.Enqueue("Damilola");
-            Console.WriteLine(queue.Count);
-            queue.Enqueue("Samuel");
-            Console.WriteLine(queue.Count);
-            queue.Enqueue("Bolu");
-            Console.WriteLine(queue.Count);
-            queue.Enqueue("Nnenna");
-            Console.WriteLine(queue.Count);
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Count);
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Count);
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Count);
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Count);
+            Console.WriteLine(List.Count);
+            List.Add("Damilola");
+            Console.WriteLine(List.Count);
+            List.Add("Samuel");
+            Console.WriteLine(List.Count);
+            List.Add("Bolu");
+            Console.WriteLine(List.Count);
+            List.Add("Nnenna");
+            Console.WriteLine(List.Count);
+            List.Remove("Bolu");
+            Console.WriteLine(List.Count);
+            Console.WriteLine(List.Check("Nnenna"));
+            Console.WriteLine(List.Count);
+            List.Remove("Nnenna");
+            Console.WriteLine(List.Count);
+            Console.WriteLine(List.Check("Nnenna"));
+            Console.WriteLine(List.Count);
         }
     }
 }

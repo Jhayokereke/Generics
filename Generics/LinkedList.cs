@@ -7,6 +7,7 @@ namespace Generics
     public class LinkedList<T> : ICollection<T>
     {
         public Node Head;
+        public Node Tail;
 
         public int Count { get; private set; } = 0;
 
@@ -16,13 +17,15 @@ namespace Generics
         {
             if (Head == null)
             {
-                Head = new Node(item);
+                Head = Tail = new Node(item);
                 Count++;
                 return Count;
             }
             else
             {
-                Head.AddNext(item);
+                Node temp = new Node(item);
+                Tail.Next = temp;
+                Tail = temp;
                 Count++;
                 return Count;
             }
@@ -42,7 +45,12 @@ namespace Generics
             }
             else
             {
-                return Head.RemoveNext(item);
+                bool done = Head.RemoveNext(item);
+                if (done == true)
+                {
+                    Count--;
+                }
+                return done;
             }
         }
 
@@ -119,18 +127,6 @@ namespace Generics
             {
                 Value = val;
                 Next = null;
-            }
-
-            internal void AddNext(T val)
-            {
-                if (Next == null)
-                {
-                    Next = new Node(val);
-                }
-                else
-                {
-                    Next.AddNext(val);
-                }
             }
 
             internal bool RemoveNext(T val)
