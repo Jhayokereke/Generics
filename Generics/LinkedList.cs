@@ -6,8 +6,8 @@ namespace Generics
 {
     public class LinkedList<T> : ICollection<T>
     {
-        public Node Head;
-        public Node Tail;
+        public Node Head { get; set; }
+        public Node Tail { get; set; }
 
         public int Count { get; private set; } = 0;
 
@@ -120,8 +120,8 @@ namespace Generics
 
         public class Node
         {
-            public T Value;
-            public Node Next;
+            public T Value { get; set; }
+            public Node Next { get; set; }
 
             public Node(T val)
             {
