@@ -7,7 +7,7 @@ namespace Generics
 {
     public class Stack<T> : ICollection<T>
     {
-        public Node Head { get; set; }
+        private Node Head { get; set; }
         public int Count { get; private set; } = 0;
 
         public bool IsReadOnly => throw new NotImplementedException();
@@ -92,7 +92,7 @@ namespace Generics
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new Enumerator(this);
         }
 
         public bool Remove(T item)
@@ -105,15 +105,69 @@ namespace Generics
             throw new NotImplementedException();
         }
 
-        public class Node
+        internal class Node
         {
-            public T Value { get; set; }
-            public Node Next { get; set; }
+            internal T Value { get; set; }
+            internal Node Next { get; set; }
 
-            public Node(T val)
+            internal Node(T val)
             {
                 Value = val;
                 Next = null;
+            }
+        }
+
+        private class Enumerator : IEnumerator<T>
+        {
+            private readonly Stack<T> _stack;
+
+            private int _index;
+
+            private Node _currentNode;
+
+            public Enumerator(Stack<T> stack)
+            {
+                _stack = stack;
+                _index = stack.Count;
+                _currentNode = stack.Head;
+            }
+
+            public T Current
+            {
+                get
+                {
+                    if (_index < 0)
+                    {
+                        throw new InvalidOperationException("Enumerator has ended");
+                    }
+                    T current = _currentNode.Value;
+                    _currentNode = _currentNode.Next;
+                    return current;
+                }
+            }
+
+            object IEnumerator.Current => throw new NotImplementedException();
+
+            public void Dispose()
+            {
+                _index = -1;
+            }
+
+            public bool MoveNext()
+            {
+                _index -= 1;
+                // End of enumeration.
+                if (_index < 0)
+                {
+                    return false;
+                }
+                else
+                    return true;
+            }
+
+            public void Reset()
+            {
+                _index = _stack.Count;
             }
         }
     }

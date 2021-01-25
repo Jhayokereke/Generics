@@ -6,8 +6,8 @@ namespace Generics
 {
     public class LinkedList<T> : ICollection<T>
     {
-        public Node Head { get; set; }
-        public Node Tail { get; set; }
+        private Node Head { get; set; }
+        private Node Tail { get; set; }
 
         public int Count { get; private set; } = 0;
 
@@ -15,15 +15,15 @@ namespace Generics
 
         public int Add(T item)
         {
+            Node temp = new Node(item);
             if (Head == null)
             {
-                Head = Tail = new Node(item);
+                Head = Tail = temp;
                 Count++;
                 return Count;
             }
             else
             {
-                Node temp = new Node(item);
                 Tail.Next = temp;
                 Tail = temp;
                 Count++;
@@ -105,7 +105,7 @@ namespace Generics
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new Enumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -118,12 +118,12 @@ namespace Generics
             throw new NotImplementedException();
         }
 
-        public class Node
+        internal class Node
         {
-            public T Value { get; set; }
-            public Node Next { get; set; }
+            internal T Value { get; set; }
+            internal Node Next { get; set; }
 
-            public Node(T val)
+            internal Node(T val)
             {
                 Value = val;
                 Next = null;
@@ -178,6 +178,60 @@ namespace Generics
                 {
                     return Next.IndexOfNext(index, val);
                 }
+            }
+        }
+
+        private class Enumerator : IEnumerator<T>
+        {
+            private readonly LinkedList<T> _linkedList;
+
+            private int _index;
+
+            private Node _currentNode;
+
+            public Enumerator(LinkedList<T> list)
+            {
+                _linkedList = list;
+                _index = list.Count;
+                _currentNode = list.Head;
+            }
+
+            public T Current
+            {
+                get
+                {
+                    if (_index < 0)
+                    {
+                        throw new InvalidOperationException("Enumerator has ended");
+                    }
+                    T current = _currentNode.Value;
+                    _currentNode = _currentNode.Next;
+                    return current;
+                }
+            }
+
+            object IEnumerator.Current => throw new NotImplementedException();
+
+            public void Dispose()
+            {
+                _index = -1;
+            }
+
+            public bool MoveNext()
+            {
+                _index -= 1;
+                // End of enumeration.
+                if (_index < 0)
+                {
+                    return false;
+                }
+                else
+                    return true;
+            }
+
+            public void Reset()
+            {
+                _index = _linkedList.Count;
             }
         }
     }
