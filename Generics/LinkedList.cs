@@ -19,16 +19,14 @@ namespace Generics
             if (Head == null)
             {
                 Head = Tail = temp;
-                Count++;
-                return Count;
             }
             else
             {
                 Tail.Next = temp;
                 Tail = temp;
-                Count++;
-                return Count;
             }
+            Count++;
+            return Count;
         }
 
         public bool Remove(T item)
@@ -37,21 +35,24 @@ namespace Generics
             {
                 return false;
             }
-            else if (Head.Value.Equals(item))
+            if (Head.Value.Equals(item))
             {
                 Head = Head.Next;
                 Count--;
                 return true;
             }
-            else
+            Node temp = Head;
+            while (temp.Next != null)
             {
-                bool done = Head.RemoveNext(item);
-                if (done == true)
+                if (temp.Next.Value.Equals(item))
                 {
+                    temp.Next = temp.Next.Next;
                     Count--;
+                    return true;
                 }
-                return done;
+                temp = temp.Next;
             }
+            return false;
         }
 
         public bool Check(T item)
@@ -60,14 +61,16 @@ namespace Generics
             {
                 return false;
             }
-            else if (Head.Value.Equals(item))
+            Node temp = Head;
+            while (temp != null)
             {
-                return true;
+                if (temp.Value.Equals(item))
+                {
+                    return true;
+                }
+                temp = temp.Next;
             }
-            else
-            {
-                return Head.CheckNext(item);
-            }
+            return false;
         }
 
         public int Index(T item)
@@ -77,15 +80,17 @@ namespace Generics
             {
                 return -1;
             }
-            else if (Head.Value.Equals(item))
+            Node temp = Head;
+            while (temp != null)
             {
-                return index;
+                if (temp.Value.Equals(item))
+                {
+                    return index;
+                }
+                index++;
+                temp = temp.Next;
             }
-            else
-            {
-                index += Head.IndexOfNext(index, item);
-                return index;
-            }
+            return -1;
         }
 
         public void Clear()
@@ -127,57 +132,6 @@ namespace Generics
             {
                 Value = val;
                 Next = null;
-            }
-
-            internal bool RemoveNext(T val)
-            {
-                if (Next == null)
-                {
-                    return false;
-                }
-                else if (Next.Value.Equals(val))
-                {
-                    var temp = Next;
-                    this.Next = temp.Next;
-                    return true;
-                }
-                else
-                {
-                    return Next.RemoveNext(val);
-                }
-            }
-
-            internal bool CheckNext(T val)
-            {
-                if (Next == null)
-                {
-                    return false;
-                }
-                else if (Next.Value.Equals(val))
-                {
-                    return true;
-                }
-                else
-                {
-                    return Next.CheckNext(val);
-                }
-            }
-
-            internal int IndexOfNext(int prevIndex, T val)
-            {
-                int index = prevIndex+1;
-                if (Next == null)
-                {
-                    return -1;
-                }
-                else if (Next.Value.Equals(val))
-                {
-                    return index;
-                }
-                else
-                {
-                    return Next.IndexOfNext(index, val);
-                }
             }
         }
 
