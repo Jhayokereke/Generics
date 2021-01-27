@@ -7,7 +7,7 @@ namespace Generics
 {
     public class Stack<T> : ICollection<T>
     {
-        private Node Head { get; set; }
+        public Node Head { get; set; }
         public int Count { get; private set; } = 0;
 
         public bool IsReadOnly => throw new NotImplementedException();
@@ -52,7 +52,7 @@ namespace Generics
             }
         }
 
-        public void Pop()
+        public T Pop()
         {
             if (IsEmpty())
             {
@@ -60,8 +60,10 @@ namespace Generics
             }
             else
             {
+                T val = Head.Value;
                 Head = Head.Next;
                 Count--;
+                return val;
             }
         }
 
@@ -105,9 +107,9 @@ namespace Generics
             throw new NotImplementedException();
         }
 
-        internal class Node
+        public class Node
         {
-            internal T Value { get; set; }
+            public T Value { get; set; }
             internal Node Next { get; set; }
 
             internal Node(T val)

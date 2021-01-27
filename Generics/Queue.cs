@@ -7,9 +7,10 @@ namespace Generics
 {
     public class Queue<T>: ICollection<T>
     {
-        private Node Head { get; set; }
+        public Node Head { get; set; }
 
-        private Node Tail { get; set; }
+        public Node Tail { get; set; }
+
         public int Count { get; private set; } = 0;
 
         public bool IsReadOnly => throw new NotImplementedException();
@@ -97,9 +98,9 @@ namespace Generics
             throw new NotImplementedException();
         }
 
-        internal class Node
+        public class Node
         {
-            internal T Value { get; set; }
+            public T Value { get; set; }
             internal Node Next { get; set; }
 
             internal Node(T val)
