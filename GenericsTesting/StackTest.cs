@@ -60,6 +60,24 @@ namespace GenericsTesting
         }
 
         [TestMethod]
+        public void Test_Peek_Method()
+        {
+            //Arrange
+            stack.Push("Rebecca");
+            stack.Push("Emmanuel");
+            stack.Push("Bertolt");
+            stack.Push("Samson");
+
+            string firstOut = "Samson";
+
+            //Act
+            string actualFirst = stack.Peek();
+
+            //Assert
+            Assert.AreEqual(firstOut, actualFirst);
+        }
+
+        [TestMethod]
         public void Test_Size_Method()
         {
             //Arrange
